@@ -1,0 +1,20 @@
+﻿@using System.Data 
+
+@if (HttpContext.Current.Request.IsAuthenticated)
+{
+    <ul class="navbar-nav navbar-right">
+        <li class="info-user" style="width: auto;">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            @Html.ActionLink("Hello " + Demo_1.Unility.SessionHelper.GetSessionInfoLogin.ho_ten + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+        </li>
+        <li class="btn-logout"><a href="/User/Index" class="nav-link">Đăng xuất</a></li>
+    </ul>
+}
+else
+{
+<ul class="navbar-nav navbar-right">
+    <li style="color:#FFF;">@Html.ActionLink("Đăng nhập", "Index", "User", new { area = "" }, new { @class = "nav-link" })</li>
+    <li style="color:#FFF;">@Html.ActionLink("Đăng ký", "Register", "User", new { area = "" }, new { @class = "nav-link" })</li>
+    <li style="color:#FFF;">@Html.ActionLink("Đăng tuyển ngay", "SignUpCompany", "Company", new { area = "" }, new { @class = "nav-link" })</li>
+</ul>
+}
