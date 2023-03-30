@@ -1,4 +1,4 @@
-﻿@model Demo_1.Models.LoginViewModel.LoginViewModel
+﻿@model Demo_1.Models.LoginCompanyViewModel.LoginCompanyViewModel
 
 @{ 
     ViewBag.Title = "Đăng nhập - JobFinder Web tìm kiếm - đăng việc làm nhanh chóng";
@@ -14,11 +14,14 @@
     </head>
     <body>
         <div class="container d-flex" style="margin-top: 32px; width: 100%;">
+            <div class="box-right">
+                <p>Box right</p>
+            </div>
             <div class="box-left">
-                @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                @using (Html.BeginForm("Login", "Company", FormMethod.Post))
                 {
                     <a href="/Home/Index">
-                        <img src="~/wwwroot/image/Logo.png" style="width: 120px;"/>
+                        <img src="~/wwwroot/image/Logo.png" style="width: 120px;" />
                     </a>
                     <div class="title">
                         <h3>Chào mừng bạn trở lại</h3>
@@ -65,19 +68,15 @@
                     <div class="box-options">
                         <div class="box-signup">
                             <p>Bạn chưa có tài khoản?</p>
-                            @Html.ActionLink("Đăng ký ngay", "Register", "User", new { area = " " }, new { @class = "nav-link"})
+                            @Html.ActionLink("Đăng ký ngay", "Register", "Company", new { area = " " }, new { @class = "nav-link" })
                         </div>
-                        @Html.ActionLink("Quên mật khẩu", "ForgotPassword", "User", new { area = " " }, new { @class = "nav-link" })
+                        @Html.ActionLink("Quên mật khẩu", "ForgotPassword", "Company", new { area = " " }, new { @class = "nav-link" })
                     </div>
                     <div class="box-support">
                         <p>Bạn đang khó khăn trong việc tạo tài khoản?</p>
                         <span>Hãy gọi tới số (84)-386545891 (giờ hành chính)</span>
                     </div>
                 }
-            </div>
-           
-            <div class="box-right">
-                <p>Box right</p>
             </div>
         </div>
 

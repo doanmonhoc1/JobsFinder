@@ -27,7 +27,7 @@ namespace Demo_1.Unility
                 }
                 else
                 {
-                    HttpContext.Current.Response.Redirect("~/User/Login");
+                    HttpContext.Current.Response.Redirect("~/User/Index");
                 }
 
                 return nt;
@@ -44,6 +44,42 @@ namespace Demo_1.Unility
         public static void ClearSession()
         {
             HttpContext.Current.Session[SessionName] = null;
+            HttpContext.Current.Session.Abandon();
+            HttpContext.Current.Session.Clear();
+        }
+
+        private static string SessionNameCompany = "CompanyLoginSession";
+        public static cong_ty GetSessionInfoLoginCompany
+        {
+            get
+            {
+                cong_ty ct = new cong_ty();
+                if (HttpContext.Current.Request.IsAuthenticated)
+                {
+                    if (HttpContext.Current.Session[SessionNameCompany] != null)
+                    {
+                        ct = HttpContext.Current.Session[SessionNameCompany] as cong_ty;
+                    }
+                }
+                else
+                {
+                    HttpContext.Current.Response.Redirect("~/Company/Index");
+                }
+
+                return ct;
+            }
+        }
+        public static void CreateSessionCompany(cong_ty ct)
+        {
+            if (HttpContext.Current.Session[SessionNameCompany] == null)
+            {
+                HttpContext.Current.Session[SessionNameCompany] = ct;
+            }
+        }
+
+        public static void ClearSessionCompany()
+        {
+            HttpContext.Current.Session[SessionNameCompany] = null;
             HttpContext.Current.Session.Abandon();
             HttpContext.Current.Session.Clear();
         }

@@ -1,4 +1,4 @@
-﻿@model Demo_1.Models.RegisterViewModel.RegisterViewModel
+﻿@model Demo_1.Models.RegisterCompanyViewModel.RegisterCompanyViewModel
 
 @{
     ViewBag.Title = "Đăng nhập - JobFinder Web tìm kiếm - đăng việc làm nhanh chóng";
@@ -14,8 +14,11 @@
 </head>
 <body>
     <div class="container d-flex" style="margin-top: 32px; width: 100%;">
+        <div class="box-right">
+            box right
+        </div>
         <div class="box-left">
-            @using (Html.BeginForm("Register", "User", FormMethod.Post))
+            @using (Html.BeginForm("Register", "Company", FormMethod.Post))
             {
                 <a href="/Home/Index">
                     <img src="~/wwwroot/image/Logo.png" style="width: 120px;" />
@@ -32,7 +35,7 @@
                         <ion-icon name="person"></ion-icon>
                         @Html.TextBoxFor(model => model.Name, new { @placeholder = "Nhập họ và tên", @class = "form-control" })
                     </div>
-                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
 
                 </div>
 
@@ -63,15 +66,6 @@
                     @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                 </div>
 
-                <div class="form-group">
-                    <p>Email</p>
-                    <div class="box-input">
-                        <ion-icon name="mail-open"></ion-icon>
-                        @Html.TextBoxFor(model => model.Email, new { @placeholder = "Nhập email", @class = "form-control" })
-                    </div>
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                </div>
-
                 <div class="form-group text-center box-btn">
                     <div class="col-12">
                         <button class="btn btn-info btn-lg text-uppercase" type="submit">Đăng ký</button>
@@ -97,9 +91,9 @@
                 <div class="box-options">
                     <div class="box-signup">
                         <p>Bạn chưa đã tài khoản?</p>
-                        @Html.ActionLink("Đăng nhập", "Index", "User", new { area = " " }, new { @class = "nav-link" })
+                        @Html.ActionLink("Đăng nhập", "Index", "Company", new { area = " " }, new { @class = "nav-link" })
                     </div>
-                    @Html.ActionLink("Quên mật khẩu", "ForgotPassword", "User", new { area = " " }, new { @class = "nav-link" })
+                    @Html.ActionLink("Quên mật khẩu", "ForgotPassword", "Company", new { area = " " }, new { @class = "nav-link" })
                 </div>
                 <div class="box-support">
                     <p>Bạn đang khó khăn trong việc tạo tài khoản?</p>
@@ -108,9 +102,6 @@
             }
         </div>
 
-        <div class="box-right">
-            box right
-        </div>
     </div>
 </body>
 </html>

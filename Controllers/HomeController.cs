@@ -1,4 +1,6 @@
-﻿using Demo_1.Unility;
+﻿using Data;
+using Demo_1.Unility;
+using Demo_1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,29 +10,34 @@ using System.Web.Mvc;
 namespace Demo_1.Controllers
 {
     [Authorize]
+    [AllowAnonymous]
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
-            var numberPhone = SessionHelper.GetSessionInfoLogin.sdt;
-            ViewBag.Message = numberPhone;
             return View();
         }
-
-        public ActionResult About()
+        public ActionResult AllJobs()
         {
-            var numberPhone = SessionHelper.GetSessionInfoLogin.sdt;
-            ViewBag.Message = numberPhone;
-            //ViewBag.Message = "Your application description page.";
-
-            return View();
+            using (var db = new JobFinderEntities())
+            {
+                var jobs = db.cong_viec.ToList();
+                return PartialView(jobs);
+            }
         }
 
-        public ActionResult Contact()
+        public ActionResult JobDetails(int id)
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            using (var db = new JobFinderEntities())
+            {
+                var job = db.cong_viec.Find(id);
+                if (job == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(job);
+            }
         }
     }
 }

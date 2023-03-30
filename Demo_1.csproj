@@ -143,13 +143,19 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Abstract\ICompanyModel.cs" />
     <Compile Include="Models\Abstract\IUserModel.cs" />
+    <Compile Include="Models\CompanyModel.cs" />
+    <Compile Include="Models\JobModel.cs" />
+    <Compile Include="Models\LoginCompanyViewModel\LoginCompanyViewModel.cs" />
     <Compile Include="Models\LoginViewModel\LoginViewModel.cs" />
+    <Compile Include="Models\RegisterCompanyViewModel\RegisterCompanyViewModel.cs" />
     <Compile Include="Models\RegisterViewModel\RegisterViewModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -210,10 +216,14 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\Company\Register.cshtml" />
+    <Content Include="Views\Home\JobDetails.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\AllJobs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

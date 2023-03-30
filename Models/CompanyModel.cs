@@ -1,22 +1,20 @@
 ﻿using Data;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Web;
 using bc = BCrypt.Net;
 
 namespace Demo_1.Models
 {
-    public class UserModel : IUserModel
+    public class CompanyModel
     {
-        public nguoi_tim_viec CheckLogin(string phoneNumber, string password)
+        public cong_ty CheckLogin(string phoneNumber, string password)
         {
             using (var db = new JobFinderEntities())
             {
-                var user = db.nguoi_tim_viec.FirstOrDefault(u => u.sdt == phoneNumber);
+                var user = db.cong_ty.FirstOrDefault(u => u.sdt == phoneNumber);
                 if (user != null)
                 {
                     bool verified = bc.BCrypt.Verify(password, user.mat_khau);
@@ -32,7 +30,7 @@ namespace Demo_1.Models
         {
             using (var db = new JobFinderEntities())
             {
-                return db.nguoi_tim_viec.Any(u => u.sdt == phoneNumber);
+                return db.cong_ty.Any(u => u.sdt == phoneNumber);
             }
         }
     }

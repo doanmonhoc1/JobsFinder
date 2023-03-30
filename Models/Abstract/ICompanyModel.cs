@@ -2,9 +2,9 @@
 
 namespace Demo_1.Models
 {
-    public interface IUserModel
+    public interface ICompanyModel
     {
-        nguoi_tim_viec CheckLogin(string phoneNumber, string password);
+        cong_ty CheckLogin(string phoneNumber, string password);
         bool CheckPhoneNumber(string phoneNumber);
     }
 }

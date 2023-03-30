@@ -1,41 +1,36 @@
 ﻿using Data;
 using Demo_1.Models;
-using Demo_1.Models.LoginViewModel;
-using Demo_1.Models.RegisterViewModel;
 using Demo_1.Unility;
+using Demo_1.Models.LoginCompanyViewModel;
+using Demo_1.Models.RegisterCompanyViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using System.Net.Mail;
-using System.Net;
 using bc = BCrypt.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Demo_1.Controllers
 {
-    public class UserController : Controller
+    public class CompanyController : Controller
     {
-        IUserModel _userModel;
-        public IUserModel UserModel { get { return _userModel ?? (_userModel = new UserModel()); } private set { } }
+        CompanyModel _companyModel;
+        public CompanyModel CompanyModel { get { return _companyModel ?? (_companyModel = new CompanyModel()); } private set { } }
 
         public ActionResult Index()
         {
-            LoginViewModel md = new LoginViewModel();
+            LoginCompanyViewModel md = new LoginCompanyViewModel();
             return View(md);
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(LoginViewModel obj)
+        public ActionResult Login(LoginCompanyViewModel obj)
         {
             if (ModelState.IsValid)
             {
-                var md = UserModel.CheckLogin(obj.PhoneNumber, obj.Password);
+                var md = CompanyModel.CheckLogin(obj.PhoneNumber, obj.Password);
 
                 if (md != null)
                 {
@@ -43,7 +38,7 @@ namespace Demo_1.Controllers
                     string encTicket = FormsAuthentication.Encrypt(ticket);
                     Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
 
-                    SessionHelper.CreateSession(md);
+                    SessionHelper.CreateSessionCompany(md);
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -58,21 +53,22 @@ namespace Demo_1.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            SessionHelper.ClearSession();
-            return Redirect("/User/Index");
+            SessionHelper.ClearSessionCompany();
+            return Redirect("/Company/Index");
         }
 
         [HttpGet]
         public ActionResult Register()
         {
-            RegisterViewModel md2 = new RegisterViewModel();
+            RegisterCompanyViewModel md2 = new RegisterCompanyViewModel();
             return View(md2);
         }
 
         [HttpPost]
-        public ActionResult Register(RegisterViewModel model)
+        [AllowAnonymous]
+        public ActionResult Register(RegisterCompanyViewModel model)
         {
-            var check = new UserModel();
+            var check = new CompanyModel();
             if (check.CheckPhoneNumber(model.PhoneNumber))
             {
                 ModelState.AddModelError("PhoneNumber", "Số điện thoại đã tồn tại");
@@ -80,16 +76,15 @@ namespace Demo_1.Controllers
             }
             else
             {
-                var user = new nguoi_tim_viec
+                var user = new cong_ty
                 {
                     sdt = model.PhoneNumber,
                     mat_khau = bc.BCrypt.HashPassword(model.Password),
-                    ho_ten = model.Name,
-                    email = model.Email
+                    ten_cong_ty = model.Name
                 };
                 using (var db = new JobFinderEntities())
                 {
-                    db.nguoi_tim_viec.Add(user);
+                    db.cong_ty.Add(user);
                     db.SaveChanges();
                 }
 
