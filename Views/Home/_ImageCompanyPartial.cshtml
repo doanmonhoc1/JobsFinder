@@ -1,0 +1,23 @@
+﻿@{
+    var companies = new List<Data.cong_ty>();
+    foreach (var job in Model)
+    {
+        companies.Add(job.cong_ty);
+    }
+    var distinctCompanies = companies.Distinct().ToList();
+}
+
+<div class="listCompany">
+    <h3>Công ty nổi bật</h3>
+    <p>Danh sách các công ty hàng đầu Việt Nam đang tuyển dụng nhân sự</p>
+    <div class="listCompany-slick">
+        @foreach (var company in distinctCompanies)
+        {
+            <div class="itemCompany">
+                <a href="@Url.Action("CompanyDetails", "Home", new { id = company.id })">
+                    <img src="~/wwwroot/image/avatarCompany/@company.anh_dai_dien" />
+                </a>
+            </div>
+        }
+    </div>
+</div>

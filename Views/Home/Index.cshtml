@@ -1,10 +1,220 @@
-﻿@{
-    ViewBag.Title = "AllJobs";
+﻿@model IEnumerable<Data.cong_viec>
+
+@{
+    ViewBag.Title = "Tìm việc làm nhanh 24h, việc làm mới nhất trên toàn quốc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
-    <div class="allJob">
-        @Html.Partial("AllJobs")
+    @Html.Partial("_BannerOption1Partial")
+
+    <div class="listJob">
+        <div class="d-flex justify-content-between" style="padding: 0 12px; margin-bottom: 20px">
+            <h3 class="tile-body-job" style="font-size: 18px; font-weight: 600;">Tin tuyển dụng, việc làm tốt nhất</h3>
+            <a class="btn-viewAll d-flex align-items-center" style="height: 22px;" href="@Url.Action("Index", "Jobs")">
+                <p class="m-0" style="padding-right: 4px;">Xem tất cả</p>
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="job-list">
+            @for (int i = 0; i < Model.Count(); i += 4)
+            {
+                <div class="mini-box-lostJob">
+                    @foreach (var item in Model.Skip(i).Take(4))
+                    {
+                        decimal luongmin = Convert.ToDecimal(item.muc_luong_min) / 1000000;
+                        decimal luongmax = Convert.ToDecimal(item.muc_luong_max) / 1000000;
+                        string mucluongmin = luongmin.ToString();
+                        string mucluongmax = luongmax.ToString();
+                        string[] partsmin = mucluongmin.Split('.');
+                        string[] partsmax = mucluongmax.Split('.');
+                        string mucLuongminDisplay = partsmin[0];
+                        string mucLuongmaxDisplay = partsmax[0];
+                        <div class="job-item">
+                            <div class="top">
+                                @if (item.cong_ty.anh_dai_dien != null)
+                                {
+                                    <a class="img-companyLogo" href="@Url.Action("CompanyDetails", "Home", new { id = item.cong_ty.id })">
+                                        <img src="~/wwwroot/image/avatarCompany/@item.cong_ty.anh_dai_dien" />
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="img-companyLogo" href="@Url.Action("CompanyDetails", "Home", new { id = item.cong_ty.id })">
+                                        <img src="~/wwwroot/image/Logo.png" />
+                                    </a>
+                                }
+
+                                <div class="top-right">
+                                    <a class="title-job" href="@Url.Action("JobDetails", "Home", new { id = item.id })">
+                                        @Html.DisplayFor(modelItem => item.ten_cong_viec)
+                                    </a>
+                                    <a class="subTitle-company" href="@Url.Action("CompanyDetails", "Home", new { id = item.cong_ty.id })">
+                                        @Html.DisplayFor(modelItem => item.cong_ty.ten_cong_ty)
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <div class="box-info">
+                                    <div class="mucluong mini-box-info">
+                                        <p>@Html.DisplayFor(modelItem => mucLuongminDisplay)</p>
+                                        <p>-</p>
+                                        <p>@Html.DisplayFor(modelItem => mucLuongmaxDisplay)</p>
+                                        <p>triệu</p>
+                                    </div>
+                                    <div class="mini-box-info">
+                                        <p>@Html.DisplayFor(modelItem => item.vi_tri)</p>
+                                    </div>
+                                </div>
+                                <button type="button">
+                                    <ion-icon name="heart-outline"></ion-icon>
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
     </div>
+
+    @Html.Partial("_BannerOption2Partial")
+
+    <div class="listJob2">
+        <div class="listJob2-left">
+            <div class="listJob">
+                <div class="d-flex justify-content-between" style="padding: 0 12px; margin-bottom: 20px">
+                    <h3 class="tile-body-job" style="font-size: 18px; font-weight: 600;">Tin tuyển dụng, việc làm tốt nhất</h3>
+                    <a class="btn-viewAll d-flex align-items-center" style="height: 22px;" href="@Url.Action("Index", "Jobs")">
+                        <p class="m-0" style="padding-right: 4px;">Xem tất cả</p>
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </a>
+                </div>
+                <div class="job-list-2">
+                    @for (int i = 0; i < Model.Count(); i += 4)
+                    {
+                        <div class="mini-box-lostJob">
+                            @foreach (var item in Model.Skip(i).Take(4))
+                            {
+                                decimal luongmin = Convert.ToDecimal(item.muc_luong_min) / 1000000;
+                                decimal luongmax = Convert.ToDecimal(item.muc_luong_max) / 1000000;
+                                string mucluongmin = luongmin.ToString();
+                                string mucluongmax = luongmax.ToString();
+                                string[] partsmin = mucluongmin.Split('.');
+                                string[] partsmax = mucluongmax.Split('.');
+                                string mucLuongminDisplay = partsmin[0];
+                                string mucLuongmaxDisplay = partsmax[0];
+                                <div class="job-item">
+                                    <div class="top">
+                                        @if (item.cong_ty.anh_dai_dien != null)
+                                        {
+                                            <a class="img-companyLogo" href="@Url.Action("CompanyDetails", "Home", new { id = item.cong_ty.id })">
+                                                <img src="~/wwwroot/image/avatarCompany/@item.cong_ty.anh_dai_dien" />
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a class="img-companyLogo" href="@Url.Action("CompanyDetails", "Home", new { id = item.cong_ty.id })">
+                                                <img src="~/wwwroot/image/Logo.png" />
+                                            </a>
+                                        }
+
+                                        <div class="top-right">
+                                            <a class="title-job" href="@Url.Action("JobDetails", "Home", new { id = item.id })">
+                                                @Html.DisplayFor(modelItem => item.ten_cong_viec)
+                                            </a>
+                                            <a class="subTitle-company" href="@Url.Action("CompanyDetails", "Home", new { id = item.cong_ty.id })">
+                                                @Html.DisplayFor(modelItem => item.cong_ty.ten_cong_ty)
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="box-info">
+                                            <div class="mucluong mini-box-info">
+                                                <p>@Html.DisplayFor(modelItem => mucLuongminDisplay)</p>
+                                                <p>-</p>
+                                                <p>@Html.DisplayFor(modelItem => mucLuongmaxDisplay)</p>
+                                                <p>triệu</p>
+                                            </div>
+                                            <div class="mini-box-info">
+                                                <p>@Html.DisplayFor(modelItem => item.vi_tri)</p>
+                                            </div>
+                                        </div>
+                                        <button type="button">
+                                            <ion-icon name="heart-outline"></ion-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        @Html.Partial("_BannerOption3Partial")
+    </div>
+
+    @Html.Partial("_ImageCompanyPartial")
+
+    <footer class="text-center text-white mt-3">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4 d-flex justify-content-center align-items-center">
+                <!-- Facebook -->
+                <a class="btn text-white btn-floating m-1 d-flex justify-content-center align-items-center"
+                   style="background-color: #3b5998;"
+                   href="#!"
+                   role="button">
+                    <ion-icon style="font-size: 20px;" name="logo-facebook"></ion-icon>
+                </a>
+
+                <!-- Twitter -->
+                <a class="btn text-white btn-floating m-1 d-flex justify-content-center align-items-center"
+                   style="background-color: #55acee;"
+                   href="#!"
+                   role="button">
+                    <ion-icon style="font-size: 20px;" name="logo-twitter"></ion-icon>
+                </a>
+
+                <!-- Google -->
+                <a class="btn text-white btn-floating m-1 d-flex justify-content-center align-items-center"
+                   style="background-color: #dd4b39;"
+                   href="#!"
+                   role="button">
+                    <ion-icon style="font-size: 20px;" name="logo-google"></ion-icon>
+                </a>
+
+                <!-- Instagram -->
+                <a class="btn text-white btn-floating m-1 d-flex justify-content-center align-items-center"
+                   style="background-color: #ac2bac;"
+                   href="#!"
+                   role="button">
+                    <ion-icon style="font-size: 20px;" name="logo-instagram"></ion-icon>
+                </a>
+
+                <!-- Linkedin -->
+                <a class="btn text-white btn-floating m-1 d-flex justify-content-center align-items-center"
+                   style="background-color: #0082ca;"
+                   href="#!"
+                   role="button">
+                    <ion-icon style="font-size: 20px;" name="logo-linkedin"></ion-icon>
+                </a>
+                <!-- Github -->
+                <a class="btn text-white btn-floating m-1 d-flex justify-content-center align-items-center"
+                   style="background-color: #333333;"
+                   href="#!"
+                   role="button">
+                    <ion-icon style="font-size: 20px;" name="logo-github"></ion-icon>
+                </a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-3 text-dark">
+            © 2023 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">JobsFinder.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
 </main>

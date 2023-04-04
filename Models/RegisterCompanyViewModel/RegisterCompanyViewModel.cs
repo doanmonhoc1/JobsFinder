@@ -28,5 +28,8 @@ namespace Demo_1.Models.RegisterCompanyViewModel
         [Compare("Password", ErrorMessage = "Hai mật khẩu không trùng nhau")]
         public string ConfirmPassword { get; set; }
 
+        [Required(ErrorMessage = "Email không được để trống")]
+        public string Email { get; set; }
+
     }
 }

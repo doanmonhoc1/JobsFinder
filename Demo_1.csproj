@@ -145,6 +145,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -187,9 +188,20 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="wwwroot\css\banner.css" />
+    <Content Include="wwwroot\css\bodyContent.css" />
+    <Content Include="wwwroot\css\Jobs\site.css" />
     <Content Include="wwwroot\css\login.css" />
     <Content Include="wwwroot\css\navbar.css" />
     <Content Include="wwwroot\css\site.css" />
+    <Content Include="wwwroot\js\Jobs\script.js" />
+    <Content Include="wwwroot\js\slickSliderLogin.js" />
+    <Content Include="wwwroot\js\slickSliderCompany.js" />
+    <Content Include="wwwroot\js\slickSlider2.js" />
+    <Content Include="wwwroot\js\slickSlider.js" />
+    <Content Include="wwwroot\js\SlideBannerHeight.js" />
+    <Content Include="wwwroot\js\SlideBannerShort.js" />
+    <Content Include="wwwroot\js\SlideBanner.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -214,8 +226,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
@@ -223,12 +233,18 @@
     <Content Include="Views\Company\Register.cshtml" />
     <Content Include="Views\Home\JobDetails.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\AllJobs.cshtml" />
+    <Content Include="Views\Home\_BannerOption1Partial.cshtml" />
+    <Content Include="Views\Home\_BannerOption2Partial.cshtml" />
+    <Content Include="Views\Home\_BannerOption3Partial.cshtml" />
+    <Content Include="Views\Shared\_slickSliderLogin.cshtml" />
+    <Content Include="Views\Home\_ImageCompanyPartial.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="wwwroot\image\" />
-    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\image\avatarCompany\" />
+    <Folder Include="wwwroot\image\Banner\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -259,7 +275,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
-      <Project>{5bc0b650-8846-4e8c-a904-db8ad0c00636}</Project>
+      <Project>{ffb9a248-d24f-40b0-ba24-30d044ec0a23}</Project>
       <Name>Data</Name>
     </ProjectReference>
   </ItemGroup>

@@ -69,18 +69,21 @@ namespace Demo_1.Controllers
         public ActionResult Register(RegisterCompanyViewModel model)
         {
             var check = new CompanyModel();
-            if (check.CheckPhoneNumber(model.PhoneNumber))
+            if (check.CheckContact(model.PhoneNumber, model.Email))
             {
                 ModelState.AddModelError("PhoneNumber", "Số điện thoại đã tồn tại");
-                return View(model);
+                ModelState.AddModelError("Email", "Email đã tồn tại");
+                return View(model); 
             }
+
             else
             {
                 var user = new cong_ty
                 {
                     sdt = model.PhoneNumber,
                     mat_khau = bc.BCrypt.HashPassword(model.Password),
-                    ten_cong_ty = model.Name
+                    ten_cong_ty = model.Name,
+                    email = model.Email,
                 };
                 using (var db = new JobFinderEntities())
                 {

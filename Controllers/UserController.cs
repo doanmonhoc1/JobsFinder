@@ -73,9 +73,10 @@ namespace Demo_1.Controllers
         public ActionResult Register(RegisterViewModel model)
         {
             var check = new UserModel();
-            if (check.CheckPhoneNumber(model.PhoneNumber))
+            if (check.CheckContact(model.PhoneNumber, model.Email))
             {
                 ModelState.AddModelError("PhoneNumber", "Số điện thoại đã tồn tại");
+                ModelState.AddModelError("Email", "Emai; đã tồn tại");
                 return View(model);
             }
             else

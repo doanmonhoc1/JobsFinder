@@ -1,0 +1,91 @@
+﻿
+.box-banner-1 {
+    margin-top: 24px;
+    margin-bottom: 50px;
+    background-color: transparent;
+}
+
+.box-banner-1 .banner1-box-title {
+    margin: 0 12px;
+    margin-bottom: 12px;
+}
+
+.box-banner-1 .banner1-box-title > h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.box-banner-1 .banner1-box-title > p {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    color: #999;
+}
+
+.banner1-box-slick > img {
+    border-radius: 5px;
+}
+
+.slick-prev:before, .slick-next:before {
+    font-size: 28px;
+    color: #03C988;
+}
+
+.slick-prev, .slick-next {
+    width: 32px;
+    height: 32px;
+}
+
+.box-banner-2 {
+    margin: 24px 0;
+}
+
+.listJob2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.listJob2 .listJob2-left {
+    width: 65%;
+    z-index: 10;
+}
+
+.listJob2 .box-banner-3 {
+    width: 35%;
+}
+
+.listCompany {
+    margin-top: 24px;
+}
+
+.listCompany > h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.listCompany > p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #999;
+    margin: 0;
+    margin-bottom: 12px;
+}
+
+.listCompany .listCompany-slick .itemCompany {
+    width: 156px;
+    height: 156px;
+}
+
+.listCompany .listCompany-slick .itemCompany > a {
+    height: 156px;
+    display: block;
+    margin: 0;
+}
+
+.listCompany .listCompany-slick .itemCompany > a > img {
+    width: 156px;
+    height: 156px;
+    border-radius: 5px;
+}

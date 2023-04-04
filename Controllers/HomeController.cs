@@ -16,13 +16,9 @@ namespace Demo_1.Controllers
 
         public ActionResult Index()
         {
-            return View();
-        }
-        public ActionResult AllJobs()
-        {
             using (var db = new JobFinderEntities())
             {
-                var jobs = db.cong_viec.ToList();
+                var jobs = db.cong_viec.Include("cong_ty").ToList();
                 return PartialView(jobs);
             }
         }
@@ -31,13 +27,13 @@ namespace Demo_1.Controllers
         {
             using (var db = new JobFinderEntities())
             {
-                var job = db.cong_viec.Find(id);
-                if (job == null)
+                var job = db.cong_viec.Include("cong_ty").FirstOrDefault(j => j.id == id);
+                if (job != null)
                 {
-                    return HttpNotFound();
+                    return View(job);
                 }
-                return View(job);
             }
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/slick/slick-theme.css" />
+    <link rel="stylesheet" href="~/wwwroot/css/site.css" />
+    <link rel="stylesheet" href="~/wwwroot/css/navbar.css" />
+    <link rel="stylesheet" href="~/wwwroot/css/Jobs/site.css" />
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-expand bg-white position-fixed" style="width: 100%; z-index: 20; top: 0;">
+        <div class="container">
+            <div>
+                <a href="/Home/Index">
+                    <img class="logo-brand" src="~/wwwroot/image/Logo.png" />
+                </a>
+                @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>
+                        @Html.ActionLink("Tìm việc làm", "Jobs", "Jobs", new { area = "" }, new { @class = "nav-link" })
+                        <div class="dropdown">
+                            <ul class="navbar navbar-menu">
+                                <li>
+                                    @Html.ActionLink("Việc làm Fulltime", "JobFulltime", "Job", new { area = "" }, new { @class = "nav-link" })
+                                    <span class="new">Mới</span>
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Việc làm Online", "JobOnline", "Job", new { area = "" }, new { @class = "nav-link" })
+                                    <span class="hot">Hot</span>
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Cuộc thi thiết kế", "TestDesign", "Job", new { area = "" }, new { @class = "nav-link" })
+                                    <span class="hot">Hot</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        @Html.ActionLink("Đăng tin tuyển dụng", "About", "Home", new { area = "" }, new { @class = "nav-link" })
+                        <div class="dropdown">
+                            <ul class="navbar navbar-menu">
+                                <li>
+                                    <ion-icon name="folder-open-outline"></ion-icon>
+                                    @Html.ActionLink("Đăng việc theo dự án", "CreateJobAProject", "Job", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                                <li>
+                                    <ion-icon name="time-outline"></ion-icon>
+                                    @Html.ActionLink("Đăng việc bán thời gian", "CreateJobPartime", "Job", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                                <li>
+                                    <ion-icon name="briefcase-outline"></ion-icon>
+                                    @Html.ActionLink("Đăng việc toàn thời gian", "CreateJobFulltime", "Job", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                                <li>
+                                    <ion-icon name="golf-outline"></ion-icon>
+                                    @Html.ActionLink("Tạo cuộc thi thiết kế", "CreateTestDesign", "Job", new { area = "" }, new { @class = "nav-link" })
+                                    <span class="hot">Hot</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        @Html.ActionLink("Hồ sơ năng lực", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
+                        <div class="dropdown">
+                            <ul class="navbar navbar-menu">
+                                <li>
+                                    <img src="~/wwwroot/image/Logo_2.png" style="width: 20px;" />
+                                    @Html.ActionLink("Hồ sơ JobFinder", "Brief", "Brief", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                                <li>
+                                    <ion-icon name="document-attach-outline"></ion-icon>
+                                    @Html.ActionLink("Sản phẩm đã làm", "AllBrief", "Brief", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+    <div class="body body-content position-relative" style="top: 53px;">
+        @RenderBody()
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="~/wwwroot/slick/slick.min.js"></script>
+    <script type="text/javascript" src="~/wwwroot/js/Jobs/script.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>

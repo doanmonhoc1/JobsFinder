@@ -1,0 +1,159 @@
+﻿@model IEnumerable<Data.cong_viec>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+<div class="body-container">
+    <div class="header">
+        <div class="header-content">
+            <h3>Việc làm tốt nhất</h3>
+            <p>Tìm kiếm công việc mơ ước từ những cơ hội việc làm tốt nhất trên JobsFinder</p>
+            <ul>
+                <li>
+                    <ion-icon name="checkmark-circle"></ion-icon>
+                    <p>Lương cao</p>
+                </li>
+                <li>
+                    <ion-icon name="checkmark-circle"></ion-icon>
+                    <p>Phúc lợi hấp dẫn</p>
+                </li>
+                <li>
+                    <ion-icon name="checkmark-circle"></ion-icon>
+                    <p>Môi trường chuyên nghiệp</p>
+                </li>
+            </ul>
+        </div>
+        <img src="~/wwwroot/image/Banner/BannerLogin1.png" style="height: 160px"/>
+    </div>
+
+    <main class="main">
+        <div class="main-search-box">
+            @using (Html.BeginForm("Index", "Jobs", FormMethod.Get))
+            {
+                <div class="form-group">
+                    @Html.TextBox("searchName", null, new { @class = "form-control", placeholder = "Nhập tên việc làm" })
+                </div>
+
+                <div class="form-group">
+                    <ion-icon name="cash-outline"></ion-icon>
+                    @Html.TextBox("minSalary", null, new { @class = "form-control", placeholder = "Nhập mức lương tối thiểu" })
+                </div>
+
+                <div class="form-group">
+                    <ion-icon name="navigate-circle-outline"></ion-icon>
+                    <select name="location" class="form-control">
+                        <option value="">Tất cả</option>
+                        @foreach (var item in Model.Select(x => x.vi_tri).Distinct())
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <ion-icon name="golf-outline"></ion-icon>
+                    <select name="jobType" class="form-control">
+                        <option value="">Tất cả</option>
+                        @foreach (var item in Model.Select(x => x.hinh_thuc_lam_viec).Distinct())
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            }
+        </div>
+
+        <div class="count">
+            <p>Tìm thấy <strong>@Model.Count()</strong> kết quả phù hợp</p>
+        </div>
+
+        <div class="category">
+            <div class="listJob">
+                @foreach (var item in Model)
+                {
+                    decimal luongmin = Convert.ToDecimal(item.muc_luong_min) / 1000000;
+                    decimal luongmax = Convert.ToDecimal(item.muc_luong_max) / 1000000;
+                    string mucluongmin = luongmin.ToString();
+                    string mucluongmax = luongmax.ToString();
+                    string[] partsmin = mucluongmin.Split('.');
+                    string[] partsmax = mucluongmax.Split('.');
+                    string mucLuongminDisplay = partsmin[0];
+                    string mucLuongmaxDisplay = partsmax[0];
+
+
+                    <div class="job-item">
+                        <img style="width: 90px; height: 90px; border: 1px solid #eee; border-radius: 5px" src="~/wwwroot/image/avatarCompany/@item.cong_ty.anh_dai_dien" />
+                        <div class="job-item-info">
+                            <div class="info-top">
+                                <a class="title-job" href="@Url.Action("JobDetails", "Home", new { id = item.id })">
+                                    @Html.DisplayFor(modelItem => item.ten_cong_viec)
+                                </a>
+                                <a class="subTitle-company" href="@Url.Action("CompanyDetails", "Home", new { id = item.cong_ty.id })">
+                                    @Html.DisplayFor(modelItem => item.cong_ty.ten_cong_ty)
+                                </a>
+                            </div>
+                            <div class="sub-info">
+                                <p>@item.vi_tri</p>
+                                <span class="countdown" data-expiry="@item.ngay_het_han"></span>
+                            </div>
+                        </div>
+                        <div class="item-info-right">
+                            <div class="mucluong">
+                                <p>@Html.DisplayFor(modelItem => mucLuongminDisplay)</p>
+                                <p>-</p>
+                                <p>@Html.DisplayFor(modelItem => mucLuongmaxDisplay)</p>
+                                <p>triệu</p>
+                            </div>
+                            <div class="btns-action">
+                                <a class="btn-apply" href="@Url.Action("UngTuyen", "Home", new { id = item.id })">
+                                    Ứng tuyển
+                                </a>
+                                <button type="button">
+                                    <ion-icon name="heart-outline"></ion-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="slider-right" style="width: 350px;">
+                <h3>Có thể bạn quan tâm</h3>
+            </div>
+        </div>
+
+        
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <strong>Cơ hội ứng tuyển việc làm với đãi ngộ hấp dẫn tại các công ty hàng đầu</strong>
+            <p>Trước sự phát triển vượt bậc của nền kinh tế, rất nhiều ngành nghề trở nên khan hiếm nhân lực hoặc thiếu nhân lực giỏi. Vì vậy, hầu hết các trường Đại học đều liên kết với các công ty, doanh nghiệp, cơ quan để tạo cơ hội cho các bạn sinh viên được học tập, rèn luyện bản thân và làm quen với môi trường làm việc từ sớm. Trong <a href="/Jobs/Index">Danh sách việc làm</a> trên đây, JobsFinder mang đến cho bạn những cơ hội việc làm tại những môi trường làm việc năng động, chuyên nghiệp.</p>
+
+            <strong>Vậy tại sao nên tìm việc làm tại JobsFinder?</strong>
+            <strong>Việc làm Chất lượng</strong>
+            <ul>
+                <li>Hàng ngàn tin tuyển dụng chất lượng cao được cập nhật thường xuyên để đáp ứng nhu cầu tìm việc của ứng viên.</li>
+                <li>Hệ thống thông minh tự động gợi ý các công việc phù hợp theo CV của bạn.</li>
+            </ul>
+            <strong>Hỗ trợ Người tìm việc</strong>
+            <ul>
+                <li>Nhà tuyển dụng chủ động tìm kiếm và liên hệ với bạn qua hệ thống kết nối ứng viên thông minh.</li>
+                <li>Báo cáo chi tiết Nhà tuyển dụng đã xem CV và gửi offer tới bạn.</li>
+            </ul>
+
+            <p>Tại <a href="/Home/Index">JobsFinder</a>, bạn có thể tìm thấy những tin tuyển dụng việc làm với mức lương vô cùng hấp dẫn. Những nhà tuyển dụng kết nối với JobsFinder đều là những công ty lớn tại Việt Nam, nơi bạn có thể làm việc trong một môi trường chuyên nghiệp, năng động, trẻ trung. <a href="/Home/Index">JobsFinder</a> là nền tảng tuyển dụng công nghệ cao giúp các nhà tuyển dụng và ứng viên kết nối với nhau. Nhanh tay tạo CV để ứng tuyển vào các vị trí việc làm mới nhất hấp dẫn tại việc làm mới nhất tại Hà Nội, việc làm mới nhất tại TP.HCM ở JobsFinder, bạn sẽ tìm thấy những việc làm mới nhất với mức lương tốt nhất!</p>
+
+            <strong>Từ khoá tìm việc làm phổ biến tại JobsFinder</strong>
+
+
+        </div>
+    </footer>
+
+</div>
+
+

@@ -28,11 +28,11 @@ namespace Demo_1.Models
                 return null;
             }
         }
-        public bool CheckPhoneNumber(string phoneNumber)
+        public bool CheckContact(string phoneNumber, string Email)
         {
             using (var db = new JobFinderEntities())
             {
-                return db.nguoi_tim_viec.Any(u => u.sdt == phoneNumber);
+                return db.nguoi_tim_viec.Any(u => u.sdt == phoneNumber || u.email == Email);
             }
         }
     }

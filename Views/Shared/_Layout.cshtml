@@ -6,15 +6,22 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" href="~/wwwroot/css/site.css"/>
-    <link rel="stylesheet" href="~/wwwroot/css/navbar.css"/>
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/slick/slick-theme.css" />
+    <link rel="stylesheet" href="~/wwwroot/css/site.css" />
+    <link rel="stylesheet" href="~/wwwroot/css/navbar.css" />
+    <link rel="stylesheet" href="~/wwwroot/css/login.css" />
+    <link rel="stylesheet" href="~/wwwroot/css/banner.css" />
+    <link rel="stylesheet" href="~/wwwroot/css/bodyContent.css" />
+
+
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-expand bg-white">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-expand bg-white position-fixed" style="width: 100%; z-index: 20;">
         <div class="container">
             <div>
                 <a href="/Home/Index">
-                    <img class="logo-brand" src="~/wwwroot/image/Logo.png"/>
+                    <img class="logo-brand" src="~/wwwroot/image/Logo.png" />
                 </a>
                 @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
@@ -24,22 +31,27 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Tìm việc làm", "Jobs", "Jobs", new { area = "" }, new { @class = "nav-link" })
+                    <li>
+                        @Html.ActionLink("Tìm việc làm", "Jobs", "Jobs", new { area = "" }, new { @class = "nav-link" })
                         <div class="dropdown">
                             <ul class="navbar navbar-menu">
-                                <li>@Html.ActionLink("Việc làm Fulltime", "JobFulltime", "Job", new { area = "" }, new { @class = "nav-link" })
+                                <li>
+                                    @Html.ActionLink("Việc làm Fulltime", "JobFulltime", "Job", new { area = "" }, new { @class = "nav-link" })
                                     <span class="new">Mới</span>
                                 </li>
-                                <li>@Html.ActionLink("Việc làm Online", "JobOnline", "Job", new { area = "" }, new { @class = "nav-link" })
+                                <li>
+                                    @Html.ActionLink("Việc làm Online", "JobOnline", "Job", new { area = "" }, new { @class = "nav-link" })
                                     <span class="hot">Hot</span>
                                 </li>
-                                <li>@Html.ActionLink("Cuộc thi thiết kế", "TestDesign", "Job", new { area = "" }, new { @class = "nav-link" })
+                                <li>
+                                    @Html.ActionLink("Cuộc thi thiết kế", "TestDesign", "Job", new { area = "" }, new { @class = "nav-link" })
                                     <span class="hot">Hot</span>
                                 </li>
                             </ul>
                         </div>
                     </li>
-                    <li>@Html.ActionLink("Đăng tin tuyển dụng", "About", "Home", new { area = "" }, new { @class = "nav-link" })
+                    <li>
+                        @Html.ActionLink("Đăng tin tuyển dụng", "About", "Home", new { area = "" }, new { @class = "nav-link" })
                         <div class="dropdown">
                             <ul class="navbar navbar-menu">
                                 <li>
@@ -62,11 +74,12 @@
                             </ul>
                         </div>
                     </li>
-                    <li>@Html.ActionLink("Hồ sơ năng lực", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
+                    <li>
+                        @Html.ActionLink("Hồ sơ năng lực", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
                         <div class="dropdown">
                             <ul class="navbar navbar-menu">
                                 <li>
-                                    <img src="~/wwwroot/image/Logo_2.png" style="width: 20px;"/>
+                                    <img src="~/wwwroot/image/Logo_2.png" style="width: 20px;" />
                                     @Html.ActionLink("Hồ sơ JobFinder", "Brief", "Brief", new { area = "" }, new { @class = "nav-link" })
                                 </li>
                                 <li>
@@ -81,12 +94,8 @@
             @Html.Partial("_LoginPartial")
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="body body-content position-relative" style="top: 53px;">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -95,5 +104,20 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
+    <script type="text/javascript" src="~/wwwroot/js/SlideBanner.js"></script>
+    <script type="text/javascript" src="~/wwwroot/js/SlideBannerShort.js"></script>
+    <script type="text/javascript" src="~/wwwroot/js/SlideBannerHeight.js"></script>
+    <script type="text/javascript" src="~/wwwroot/js/slickSlider.js"></script>
+    <script type="text/javascript" src="~/wwwroot/js/slickSlider2.js"></script>
+    <script type="text/javascript" src="~/wwwroot/js/slickSliderLogin.js"></script>
+    <script type="text/javascript" src="~/wwwroot/js/slickSliderCompany.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="~/wwwroot/slick/slick.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
 </body>
 </html>

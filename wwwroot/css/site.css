@@ -2,10 +2,11 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
 }
 
 .container {
-    margin: 0 24px;
+    margin: 0;
     max-width: 100%;
 }
 

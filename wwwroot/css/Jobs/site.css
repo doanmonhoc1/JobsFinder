@@ -1,0 +1,328 @@
+﻿
+p {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+input:focus,select:focus {
+    box-shadow: none !important;
+}
+
+ion-icon {
+    font-size: 20px;
+    color: #03C988;
+}
+
+.body-container {
+    max-width: 1128px;
+    margin: 0 auto;
+    margin-top: 50px;
+    background: #fff;
+    border-radius: 10px
+}
+
+.body-container .header {
+    background: #03C988;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 24px 32px;
+    color: #FFF;
+    display: flex;
+    justify-content: space-between;
+}
+
+.body-container .header .header-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.body-container .header .header-content h3 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.body-container .header .header-content > p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.body-container .header .header-content ul {
+    display: flex;
+    margin-top: 24px;
+}
+
+.body-container .header .header-content ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+
+    background: #FFF;
+    color: #03C988;
+    border-radius: 20px;
+    margin-right: 24px;
+}
+
+.body-container .header .header-content ul li p {
+    padding-left: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/*=======================================================*/
+.main {
+
+}
+
+.main .main-search-box {
+    margin: 24px;
+}
+
+.main .main-search-box form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main .main-search-box form .form-group {
+    width: 22%;
+}
+
+.main .main-search-box form .form-group input,
+.main .main-search-box form .form-group select {
+    padding-left: 38px;
+    font-size: 14px;
+    height: 44px;
+    outline: none;
+    border: 1px solid #eee;
+}
+
+.main .main-search-box form .form-group ion-icon {
+    position: absolute;
+    padding: 12px;
+}
+
+.form-group input:first-child {
+    padding: 0;
+    padding-left: 12px!important;
+    color: #1e1e1e;
+}
+
+.form-group input:hover, .form-group select:hover{
+    border: 1px solid #03C988 !important;
+}
+
+.form-group select:hover {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+select option {
+    padding: 8px 0;
+}
+
+/*===========================================*/
+
+.main .count {
+    padding: 24px;
+    color: #1e1e1e;
+    padding-top: 0;
+    border-bottom: 1px solid #e5f7ed;
+}
+.main .count p {
+    color: #1e1e1e;
+    font-size: 14px;
+    font-weight: 400;
+}
+.main .count strong {
+    color: #03C988;
+}
+
+.main .line {
+    width: 100%;
+    height: 1px;
+    background: #f2fbf6;
+}
+
+/*===============================================*/
+
+.main .category {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*================================================*/
+.listJob {
+    padding: 0 24px;
+    margin-top: 12px;
+    width: 100%;
+}
+
+.listJob .job-item {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 16px;
+    background: #f2fbf6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.listJob .job-item:hover {
+    border: 1px solid #03C988;
+}
+
+
+.listJob .job-item .job-item-info {
+    width: 100%;
+    margin-left: 24px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-top .title-job {
+    font-size: 18px;
+    font-weight: 500;
+    color: #1e1e1e;
+}
+.info-top .title-job:hover {
+    text-decoration: underline;
+}
+
+.info-top .subTitle-company {
+    font-size: 15px;
+    font-weight: 400;
+    color: #424e5c;
+    margin-bottom: 12px;
+}
+.info-top .subTitle-company:hover {
+    text-decoration: underline;
+}
+
+.job-item .sub-info {
+    display: flex;
+}
+
+.job-item .sub-info p, .job-item .sub-info span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1e1e1e;
+    padding: 4px 12px;
+    background: #eee;
+    margin-right: 12px;
+    border-radius: 5px;
+}
+
+.job-item .item-info-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.job-item .item-info-right .mucluong {
+    display: flex;
+    padding: 4px 12px;
+    padding-right: 8px;
+    border-radius: 5px;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.job-item .item-info-right .mucluong p {
+    padding-right: 4px;
+    color: #03C988;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.job-item .btns-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+}
+
+.job-item .btns-action a {
+    display: block;
+    margin-right: 18px;
+    color: #FFF;
+    background: #03C988;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 500;
+}
+.job-item .btns-action a:hover {
+    background: #424e5c;
+}
+
+.job-item .btns-action button {
+    border: none;
+    background: #e5f7ed;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+}
+.job-item .btns-action button:hover {
+    background: #03C988;
+}
+.job-item .btns-action button:hover ion-icon {
+    color: #fff;
+}
+
+/*=================================================*/
+
+.slider-right {
+    margin-top: 12px;
+}
+
+.slider-right h3 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+footer {
+    margin: 24px;
+}
+
+footer ul li {
+    list-style-type: circle;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 16px;
+}
+
+footer strong, footer p {
+    font-size: 14px;
+}
+
+footer strong {
+    margin-bottom: 12px;
+}
+
+footer p {
+    margin: 12px 0;
+}
+
+footer a {
+    font-weight: 500;
+    color: #03C988;
+}

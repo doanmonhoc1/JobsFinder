@@ -8,7 +8,7 @@ using bc = BCrypt.Net;
 
 namespace Demo_1.Models
 {
-    public class CompanyModel
+    public class CompanyModel : ICompanyModel
     {
         public cong_ty CheckLogin(string phoneNumber, string password)
         {
@@ -26,11 +26,11 @@ namespace Demo_1.Models
                 return null;
             }
         }
-        public bool CheckPhoneNumber(string phoneNumber)
+        public bool CheckContact(string phoneNumber, string email)
         {
             using (var db = new JobFinderEntities())
             {
-                return db.cong_ty.Any(u => u.sdt == phoneNumber);
+                return db.cong_ty.Any(u => u.sdt == phoneNumber || u.email == email);
             }
         }
     }
